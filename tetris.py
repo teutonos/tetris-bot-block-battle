@@ -11,7 +11,7 @@ from core import *
 ESC = 27
 
 class Tetris:
-    
+    __init__
 
 
 if __name__ == "__main__":
