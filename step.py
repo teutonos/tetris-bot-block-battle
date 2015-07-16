@@ -22,9 +22,9 @@ def step(field, move):
     if move == RIGHT:
         return right(field)
     if move == TURNL:
-        return turnl(field)
+        return turn(field, False)
     if move == TURNR:
-        return turnr(field)
+        return turn(field, True)
     if move == DROP:
         return drop(field)
     return
@@ -62,13 +62,31 @@ def right(field):
                 fieldCopy[row][col+1] = 1
     return fieldCopy
 
-def turnl(field):
+def turn(field, turnright=True):
     fieldCopy = copy(field) 
     for row in range(len(fieldCopy)):
         for col in range(len(fieldCopy[row])):
             if (fieldCopy[row][col] == 1):
                 fieldCopy[row][col] = 0
-    p,r = detectPiece(field)
+
+    y,x,p,r = detectPiece(field)
+
+    piece = copy(pieces[p])
+    for i in range(r):
+        piece = rotate(piece)
+
+    piece = rotate(piece, turnright)
+
+    for row in range(len(piece)):
+        for col in range(len(piece[row])):
+            if (piece[row][col] != 1):
+                continue
+
+            if (fieldCopy[y+row][x+col] != 0):
+                return field
+
+            fieldCopy[y+row][x+col] = 1
+
     return fieldCopy
 
 def detectPiece(field):
