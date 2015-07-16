@@ -3,8 +3,6 @@
 
 import sys
 
-from tetris import core
-
 def fitness(score, combo, field):
     return 0
 

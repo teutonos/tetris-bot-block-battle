@@ -10,20 +10,8 @@ from core import *
 
 ESC = 27
 
-def getmove():
-    return ord(getch())
-
-def tetris():
-    field = [[0 for col in range(10)] for row in range(20)]
-    draw(field)
-    while True:
-        draw(field)
-        key = getmove()
-        if key == ESC:
-            break
-        else: 
-            field = step(field, key)
-        os.system('clear')
+class Tetris:
+    
 
 
 if __name__ == "__main__":
