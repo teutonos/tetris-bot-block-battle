@@ -3,6 +3,8 @@
 
 import sys
 
+import tetris
+
 def fitness(score, combo, field):
     return 0
 
@@ -28,6 +30,9 @@ def bot():
                 sys.stdout.flush()
         except EOFError:
             return
+
+def test():
+    pass
 
 if __name__ == "__main__":
     bot()
